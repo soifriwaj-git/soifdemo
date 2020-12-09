@@ -1,1 +1,1 @@
-1. Please test with user inputs as - ABC, XYZ, MNO and click on Scan button.
+1. Please test with user inputs as - ABC, XYZ, MNO and click on Scan button please.
