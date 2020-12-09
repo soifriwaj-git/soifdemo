@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome all, the page demonstrates websocket basics</h1>
+    <br>
+    <h2>Please clieck the buttin to initiate the process and monitor developer tool</h2>
+    <br>
+    <button type="button" id="button">Click Here</button>
+    <script>
+        const button = document.getElementById("button");
+        button.addEventListener('click', () => {
+            const ws6 = new WebSocket('ws://localhost:8080/');
+        ws6.onopen = () =>{
+            ws6.send('Hello Server bro its me Client !!');
+        }
+        ws6.onopen();
+        ws6.onmessage = (e) =>{
+                console.log(e.data);
+        }
+        ws6.onmessage();
+        });
+        
+        
+    </script>
+</body>
+</html>

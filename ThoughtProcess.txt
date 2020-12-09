@@ -1,0 +1,4 @@
+Below are my thought process regarding assignment part 3 and 4 which I was not able to complete.
+
+1. For step 3 it can be implemented by performing an AJAX call while the DOM Content is loaded.That should be a GET call to the endpoint which will fetch the previously serached Company, which in turn will be stored into the database while we perform the SCAN using AJAX POST to a post endpoint.The endpoint should be implemented in express side. 
+

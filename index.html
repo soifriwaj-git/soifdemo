@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src= "/socket.io/socket.io.js"></script>
+    <script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+</head>
+<body>
+    <input type="text" id="market" name="market">
+    <br><br>
+    <button type="submit" id="scan">Scan</button>
+    <div id="chart-container"></div>
+    <div id="perviouslySearchedCompany"></div>
+    <script>
+        let scanBtn = document.getElementById("scan");
+        
+        
+
+        const customFunction = () => {
+            let marketValue = document.getElementById("market").value;
+            console.log(marketValue);
+        let stockData =[];
+        let marketDataArray =[];
+            FusionCharts.ready(function () {
+                
+        if(marketValue === 'MNO'){
+             let varStockData1= [
+                        { label: "Monday", value: "40000" },
+                        { label: "Tuesday", value: "260000" },
+                        { label: "Wednesday", value: "10000" },
+                        { label: "Thursday", value: "140000" },
+                        { label: "Friday", value: "115000" },
+                        { label: "Saturday", value: "100000" }
+                    ];
+                    stockData = varStockData1; 
+                    
+        }
+        else if(marketValue === 'XYZ'){
+            let varStockData2= [
+                        { label: "Monday", value: "90000" },
+                        { label: "Tuesday", value: "260000" },
+                        { label: "Wednesday", value: "50000" },
+                        { label: "Thursday", value: "140000" },
+                        { label: "Friday", value: "115000" },
+                        { label: "Saturday", value: "10000" }
+                    ];
+                    stockData = varStockData2; 
+        }
+        else if(marketValue === 'ABC'){
+             let varStockData3= [
+                        { label: "Monday", value: "290000" },
+                        { label: "Tuesday", value: "23000" },
+                        { label: "Wednesday", value: "180000" },
+                        { label: "Thursday", value: "89000" },
+                        { label: "Friday", value: "115000" },
+                        { label: "Saturday", value: "100000" }
+                    ];
+                    stockData = varStockData3;      
+        }
+        
+            // chart instance
+            var chart = new FusionCharts({
+                type: "column2d",
+                renderAt: "chart-container", // container where chart will render
+                width: "600",
+                height: "400",
+                dataFormat: "json",
+                dataSource: {
+                    // chart configuration
+                    chart: {
+                        caption: `Company Stock Data for ${marketValue}`,
+                        subcaption: "Last week records"
+                    },
+                    // chart data
+                    data: stockData
+                }
+            }).render();
+        }
+        
+        );
+        setTimeout(() =>{
+            document.getElementById("chart-container").innerHTML = '';
+            scanBtn.removeEventListener('chart-container',customFunction);
+        },120000);
+        marketDataArray.push(marketValue);
+        document.getElementById("perviouslySearchedCompany").textContent = marketDataArray;
+    }
+        scanBtn.addEventListener('click', customFunction);
+        
+
+
+    </script>
+</body>
+</html>
